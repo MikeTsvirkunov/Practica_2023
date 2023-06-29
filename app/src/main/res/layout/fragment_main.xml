@@ -7,17 +7,6 @@
     tools:context=".fragments.MainFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/WeatherReport"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/weather_report"
-        android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="wrap_content"
@@ -31,8 +20,9 @@
         app:layout_constraintTop_toBottomOf="@+id/WeatherReport">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="320dp"
-            android:layout_height="218dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
             tools:ignore="TextSizeCheck"
             tools:visibility="visible">
 
@@ -40,7 +30,9 @@
                 android:id="@+id/NowLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/fredoka_one"
                 android:text="@string/now"
+                android:textColor="@color/black"
                 android:textSize="25sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -62,7 +54,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
+                android:fontFamily="@font/fredoka_one"
                 android:text="@string/temperture"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toEndOf="@+id/WeatherImg"
                 app:layout_constraintTop_toTopOf="@+id/WeatherImg" />
 
@@ -71,7 +65,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
+                android:fontFamily="@font/fredoka_one"
                 android:text="@string/_18_c"
+                android:textColor="@color/black"
                 android:textSize="30sp"
                 app:layout_constraintStart_toEndOf="@+id/TemperatureLabel"
                 app:layout_constraintTop_toTopOf="@+id/TemperatureLabel" />
@@ -80,8 +76,10 @@
                 android:id="@+id/WeatherConditionLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/fredoka_one"
                 android:text="@string/sunny"
+                android:textColor="@color/black"
                 android:textSize="30sp"
                 app:layout_constraintEnd_toEndOf="@+id/WeatherImg"
                 app:layout_constraintStart_toStartOf="@+id/WeatherImg"
@@ -92,7 +90,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/fredoka_one"
                 android:text="@string/wind_speed"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="@+id/TemperatureLabel"
                 app:layout_constraintTop_toBottomOf="@+id/TempInfoLabel" />
 
@@ -100,7 +100,9 @@
                 android:id="@+id/WindSpeedNumLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/fredoka_one"
                 android:text="@string/_5_m_s"
+                android:textColor="@color/black"
                 android:textSize="30sp"
                 app:layout_constraintStart_toStartOf="@+id/TempInfoLabel"
                 app:layout_constraintTop_toTopOf="@+id/WindSpeedInfo" />
@@ -110,7 +112,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/fredoka_one"
                 android:text="@string/humidity"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="@+id/WindSpeedInfo"
                 app:layout_constraintTop_toBottomOf="@+id/WindSpeedNumLabel" />
 
@@ -118,7 +122,9 @@
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/fredoka_one"
                 android:text="@string/_55"
+                android:textColor="@color/black"
                 android:textSize="30sp"
                 app:layout_constraintStart_toStartOf="@+id/WindSpeedNumLabel"
                 app:layout_constraintTop_toTopOf="@+id/textView6" />
@@ -126,5 +132,31 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/WeatherReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/fredoka_one"
+        android:text="@string/weather_report"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/GetWeatherReportBtn"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@null"
+        android:contentDescription="@string/GetWeatherReportBtnText"
+        android:src="@drawable/baseline_refresh_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
