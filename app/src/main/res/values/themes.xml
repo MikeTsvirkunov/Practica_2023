@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.PRACTICA_2023_WEATHERAPP" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.PRACTICA_2023" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -11,15 +11,8 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
-    </style>
-
-    <style name="Theme.PRACTICA_2023_WEATHERAPP.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <!-- Customize your theme here. -->
     </style>
-
-    <style name="Theme.PRACTICA_2023_WEATHERAPP.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="Theme.PRACTICA_2023_WEATHERAPP.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
