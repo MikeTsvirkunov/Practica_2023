@@ -20,24 +20,24 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportFragmentManager.beginTransaction().replace(R.id.PlaceHolder, MainFragment.newInstance()).commit()
-        getWeatherReport("London")
+//        getWeatherReport("London")
     }
-    private fun getWeatherReport(place: String){
-        val url = "https://api.openweathermap.org/data/2.5/" +
-                "weather?lat=44.34&lon=10.99&" +
-                "appid=${getString(R.string.api_key)}"
-        val queue = Volley.newRequestQueue(this)
-        val weatherReportGetRequest = StringRequest(
-            Request.Method.GET,
-            url,
-            {
-                    response->
-                val weatherReport = JSONObject(response)
-                val fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-                Log.d("RequestLog", "Weather request get success: $fusedLocationClient")
-                Log.d("RequestLog", "Weather request get success: $response")
-            },
-            {Log.d("RequestLog", "Weather request get error: $it")})
-        queue.add(weatherReportGetRequest)
-    }
+//    private fun getWeatherReport(place: String){
+//        val url = "https://api.openweathermap.org/data/2.5/" +
+//                "weather?lat=44.34&lon=10.99&" +
+//                "appid=${getString(R.string.api_key)}"
+//        val queue = Volley.newRequestQueue(this)
+//        val weatherReportGetRequest = StringRequest(
+//            Request.Method.GET,
+//            url,
+//            {
+//                    response->
+//                val weatherReport = JSONObject(response)
+//                val fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+//                Log.d("RequestLog", "Weather request get success: $fusedLocationClient")
+//                Log.d("RequestLog", "Weather request get success: $response")
+//            },
+//            {Log.d("RequestLog", "Weather request get error: $it")})
+//        queue.add(weatherReportGetRequest)
+//    }
 }

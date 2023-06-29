@@ -1,6 +1,7 @@
 package com.example.practica_2023.fragments
 
 //import android.app.DownloadManager.Request
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -35,6 +36,10 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         permissionCheck()
+        getWeatherReport("London")
+        binding.GetWeatherReportBtn.setOnClickListener{
+            getWeatherReport("London")
+        }
     }
 
     private fun permissionListener(){
@@ -48,6 +53,28 @@ class MainFragment : Fragment() {
             permissionListener()
             pLauncher.launch(android.Manifest.permission.ACCESS_FINE_LOCATION)
         }
+    }
+    private fun getWeatherReport(place: String){
+        val url = "https://api.openweathermap.org/data/2.5/" +
+                "weather?lat=44.34&lon=10.99&" +
+                "appid=${getString(R.string.api_key)}"
+        val queue = Volley.newRequestQueue(context)
+        val weatherReportGetRequest = StringRequest(
+            Request.Method.GET,
+            url,
+            {
+                    response->
+                val weatherReport = JSONObject(response)
+                UpdateMainInfo(weatherReport)
+                Log.d("RequestLog", "Weather request get success: $response")
+            },
+            {Log.d("RequestLog", "Weather request get error: $it")})
+        queue.add(weatherReportGetRequest)
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun UpdateMainInfo(weatherInfo: JSONObject){
+        binding.WindSpeedNumLabel.text = "${weatherInfo.getJSONObject("wind").getString("speed")} m/s"
     }
 
     companion object {
