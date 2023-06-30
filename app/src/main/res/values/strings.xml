@@ -14,4 +14,5 @@
     <string name="humidity">humidity:</string>
     <string name="_55">55%</string>
     <string name="GetWeatherReportBtnText">Update</string>
+    <string name="api_units">metric</string>
 </resources>

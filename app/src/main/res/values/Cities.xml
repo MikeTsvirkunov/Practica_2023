@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="London">London</string>
+    <string name="Omsk">Omsk</string>
+    <string name="Moscow">Moscow</string>
+    <string name="Petersburg">St. Petersburg</string>
+    <string name="Novosibirsk">Novosibirsk</string>
+    <string name="Krasnoyarsk">Krasnoyarsk</string>
+    <string-array name="places">
+        <item>Omsk</item>
+        <item>London</item>
+        <item>Current</item>
+    </string-array>
+</resources>
