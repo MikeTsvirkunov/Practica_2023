@@ -1,10 +1,12 @@
 package com.example.practica_2023.fragments
 
 //import android.app.DownloadManager.Request
+//import com.example.practica_2023.databinding.ActivityMainBinding
+//import com.example.practica_2023.Manifest
+
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,29 +14,30 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import androidx.fragment.app.Fragment
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.practica_2023.R
-//import com.example.practica_2023.databinding.ActivityMainBinding
-//import com.example.practica_2023.Manifest
 import com.example.practica_2023.databinding.FragmentMainBinding
-import com.google.android.gms.location.LocationServices
+import com.github.mikephil.charting.data.BarData
+import com.github.mikephil.charting.data.BarDataSet
+import com.github.mikephil.charting.data.BarEntry
+import com.github.mikephil.charting.utils.ColorTemplate
 import org.json.JSONObject
-import java.util.Dictionary
 
 
 class MainFragment : Fragment() {
     private lateinit var pLauncher: ActivityResultLauncher<String>
     private lateinit var binding: FragmentMainBinding
+
+    // bar data
+    private  lateinit var barEntriesArrayList: ArrayList<BarEntry>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMainBinding.inflate(inflater, container, false)
-
-//        getWeatherReport(getCurrentApiLink("London"))
         return binding.root
     }
 
@@ -47,6 +50,7 @@ class MainFragment : Fragment() {
             R.layout.city_check_layout,
             x)
         binding.PlaceChecker.adapter = arrayAdapter
+        CreateBarChart()
         getWeatherReport(getCurrentApiLink(binding.PlaceChecker.selectedItem.toString()))
         binding.swiperefresh.setOnRefreshListener{
             getWeatherReport(getCurrentApiLink(binding.PlaceChecker.selectedItem.toString()))
@@ -58,6 +62,29 @@ class MainFragment : Fragment() {
         pLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()){
             Toast.makeText(activity, "Permission, $it", Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun CreateBarChart(){
+        getBarEntries()
+        val barDataSet = BarDataSet(barEntriesArrayList, "Geeks for Geeks")
+        val barData = BarData(BarDataSet(barEntriesArrayList, "Geeks for Geeks"))
+        binding.HourChart.data = BarData(barDataSet)
+//        barDataSet.setColors(ColorTemplate.MATERIAL_COLORS)
+//        barDataSet.valueTextColor = Color.BLACK
+        binding.HourChart.setDrawBarShadow(false)
+        binding.HourChart.setDrawGridBackground(false)
+        binding.HourChart.setDrawBorders(false)
+        barDataSet.valueTextSize = 16f
+        binding.HourChart.description.isEnabled = false
+    }
+    private fun getBarEntries() {
+        barEntriesArrayList = ArrayList<BarEntry>()
+        barEntriesArrayList.add(BarEntry(1f, 4f))
+        barEntriesArrayList.add(BarEntry(2f, 6f))
+        barEntriesArrayList.add(BarEntry(3f, 8f))
+        barEntriesArrayList.add(BarEntry(4f, 2f))
+        barEntriesArrayList.add(BarEntry(5f, 4f))
+        barEntriesArrayList.add(BarEntry(6f, 1f))
     }
 
     private fun permissionCheck() {
