@@ -29,21 +29,6 @@ class MainFragment : Fragment() {
     private lateinit var pLauncher: ActivityResultLauncher<String>
     private lateinit var binding: FragmentMainBinding
     private lateinit var linkParams: MutableMap<String, String>
-    private var timesWeatherReportList = mutableListOf<String>()
-    private var tempWeatherReportList = mutableListOf<Float>()
-    private var wsWeatherReportList = mutableListOf<Float>()
-    // ways for values in commit JSON
-    private var valueTakers = listOf<(JSONObject) -> Unit>(
-        {timesWeatherReportList.add(it.getString("dt")) },
-        { tempWeatherReportList.add(
-            JSONObject(it.getJSONObject("main").toString())
-                .getDouble("temp")
-                .toFloat()) },
-        { wsWeatherReportList.add(
-            JSONObject(it.getJSONObject("main").toString())
-                .getDouble("humidity")
-                .toFloat())},
-    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -89,7 +74,7 @@ class MainFragment : Fragment() {
         }
     }
 
-// Updates. Just for less code.
+    // Updates. Just for less code.
     private fun updateInfo(){
         stdGetWeatherReport(
             url = getLink(getString(R.string.current_link), linkParams.toMap()),
@@ -101,6 +86,21 @@ class MainFragment : Fragment() {
             context = context,
             f = {
                 val data = it.getJSONArray("list")
+                val timesWeatherReportList = mutableListOf<String>()
+                val tempWeatherReportList = mutableListOf<Float>()
+                val wsWeatherReportList = mutableListOf<Float>()
+
+                val valueTakers = listOf<(JSONObject) -> Unit>(
+                    {obj -> timesWeatherReportList.add(obj.getString("dt")) },
+                    {obj ->  tempWeatherReportList.add(
+                        JSONObject(obj.getJSONObject("main").toString())
+                            .getDouble("temp")
+                            .toFloat()) },
+                    {obj ->  wsWeatherReportList.add(
+                        JSONObject(obj.getJSONObject("main").toString())
+                            .getDouble("humidity")
+                            .toFloat())},
+                )
                 getWeatherObjectInfo(data, (0..data.length() step 3).iterator(), valueTakers)
                 val tt = arrayListOf<BarEntry>()
                 val tws = arrayListOf<BarEntry>()
@@ -109,8 +109,6 @@ class MainFragment : Fragment() {
                     tt.add(BarEntry(pair.toFloat(), tempWeatherReportList[pair]))
                     tws.add(BarEntry(pair.toFloat(), wsWeatherReportList[pair]))
                 }
-                Log.d("BaggingRes", "Bagging = $tws")
-                Log.d("BaggingRes", "Bagging = ${getHourWSWeatherInfo(it)}")
                 setBarChartData(binding.HourTempChart, "Temperature", tt)
                 setBarChartData(binding.HourWSChart, "WindSpeed", tws)
             }
@@ -134,33 +132,9 @@ class MainFragment : Fragment() {
         barChart.invalidate()
     }
 
-    private fun getHourTempWeatherInfo(weatherInfo: JSONObject): ArrayList<BarEntry>{
-//        Log.d("HOURS", weatherInfo.toString())
-        val data = weatherInfo.getJSONArray("list")
-        val barEntriesArrayList = ArrayList<BarEntry>()
-        val times = ArrayList<String>()
-        for (i in 0 until data.length() / 3){
-            times.add(JSONObject(data[3*i].toString()).getString("dt"))
-            barEntriesArrayList.add(BarEntry(i.toFloat(), JSONObject(JSONObject(data[i].toString()).getJSONObject("main").toString()).getDouble("temp").toFloat()))
-        }
-        return barEntriesArrayList
-    }
-
     private fun getWeatherObjectInfo(data: JSONArray, dataIterator: IntIterator, valueTakers: List<(JSONObject) -> Unit>){
         dataIterator.forEach { index -> valueTakers.forEach{ taker -> taker(JSONObject(data[index].toString())) } }
     }
-
-    private fun getHourWSWeatherInfo(weatherInfo: JSONObject): ArrayList<BarEntry>{
-        val data = weatherInfo.getJSONArray("list")
-        val barEntriesArrayList = ArrayList<BarEntry>()
-        val times = ArrayList<String>()
-        for (i in 0 until data.length() / 3){
-            times.add(JSONObject(data[3*i].toString()).getString("dt"))
-            barEntriesArrayList.add(BarEntry(i.toFloat(), JSONObject(JSONObject(data[i].toString()).getJSONObject("main").toString()).getDouble("humidity").toFloat()))
-        }
-        return barEntriesArrayList
-    }
-
 
     companion object {
         @JvmStatic
