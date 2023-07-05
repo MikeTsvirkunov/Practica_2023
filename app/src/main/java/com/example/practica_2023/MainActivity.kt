@@ -8,11 +8,13 @@ import com.example.practica_2023.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
     @SuppressLint("CommitTransaction")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportFragmentManager.beginTransaction().replace(R.id.PlaceHolder, MainFragment.newInstance()).commit()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.PlaceHolder, MainFragment.newInstance()).commit()
     }
 }

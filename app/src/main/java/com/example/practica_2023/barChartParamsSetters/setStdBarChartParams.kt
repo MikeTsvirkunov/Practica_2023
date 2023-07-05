@@ -7,7 +7,7 @@ import com.example.practica_2023.R
 import com.github.mikephil.charting.charts.BarChart
 
 
-fun setStanderBarChartParams(barChart: BarChart){
+fun setStanderBarChartParams(barChart: BarChart) {
     barChart.setDrawValueAboveBar(false)
     barChart.setDrawBarShadow(false)
     barChart.setDrawGridBackground(false)
@@ -27,5 +27,4 @@ fun setStanderBarChartParams(barChart: BarChart){
     barChart.axisLeft.setDrawAxisLine(false);
     barChart.axisRight.setDrawAxisLine(false);
     barChart.description.isEnabled = false
-//    barChart.description.typeface = Resources.getSystem().getFont(R.font.fredoka_one);
 }

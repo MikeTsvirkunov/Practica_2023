@@ -11,4 +11,3 @@ fun Fragment.isPermissionAvailable(permission: String): Boolean{
     return ContextCompat.checkSelfPermission(activity as AppCompatActivity, permission) ==
             PackageManager.PERMISSION_GRANTED
 }
-
