@@ -11,6 +11,7 @@
         android:id="@+id/swiperefresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/design_default_color_on_primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +52,6 @@
                             android:layout_marginTop="20dp"
                             android:fontFamily="@font/fredoka_one"
                             android:text="@string/weather_report"
-                            android:textColor="@color/black"
                             android:textSize="25sp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -94,7 +94,6 @@
                             android:layout_marginTop="20dp"
                             android:fontFamily="@font/fredoka_one"
                             android:text="@string/now"
-                            android:textColor="@color/black"
                             android:textSize="25sp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -118,7 +117,6 @@
                             android:layout_marginStart="20dp"
                             android:fontFamily="@font/fredoka_one"
                             android:text="@string/temperture"
-                            android:textColor="@color/black"
                             app:layout_constraintStart_toEndOf="@+id/WeatherImg"
                             app:layout_constraintTop_toTopOf="@+id/WeatherImg" />
 
@@ -129,7 +127,6 @@
                             android:layout_marginStart="10dp"
                             android:fontFamily="@font/fredoka_one"
                             android:text="-- Cº"
-                            android:textColor="@color/black"
                             android:textSize="30sp"
                             app:layout_constraintStart_toEndOf="@+id/TemperatureLabel"
                             app:layout_constraintTop_toTopOf="@+id/TemperatureLabel" />
@@ -141,7 +138,6 @@
                             android:layout_marginTop="5dp"
                             android:fontFamily="@font/fredoka_one"
                             android:text="@string/sunny"
-                            android:textColor="@color/black"
                             android:textSize="30sp"
                             app:layout_constraintEnd_toEndOf="@+id/WeatherImg"
                             app:layout_constraintStart_toStartOf="@+id/WeatherImg"
@@ -154,7 +150,7 @@
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/fredoka_one"
                             android:text="@string/wind_speed"
-                            android:textColor="@color/black"
+                            android:textColor="@color/design_default_color_on_secondary"
                             app:layout_constraintStart_toStartOf="@+id/TemperatureLabel"
                             app:layout_constraintTop_toBottomOf="@+id/TempInfoLabel" />
 
@@ -164,7 +160,6 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/fredoka_one"
                             android:text="-.- m/s"
-                            android:textColor="@color/black"
                             android:textSize="30sp"
                             app:layout_constraintStart_toStartOf="@+id/TempInfoLabel"
                             app:layout_constraintTop_toTopOf="@+id/WindSpeedInfo" />
@@ -176,7 +171,6 @@
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/fredoka_one"
                             android:text="@string/humidity"
-                            android:textColor="@color/black"
                             app:layout_constraintStart_toStartOf="@+id/WindSpeedInfo"
                             app:layout_constraintTop_toBottomOf="@+id/WindSpeedNumLabel" />
 
@@ -186,7 +180,6 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/fredoka_one"
                             android:text="-- %"
-                            android:textColor="@color/black"
                             android:textSize="30sp"
                             app:layout_constraintStart_toStartOf="@+id/WindSpeedNumLabel"
                             app:layout_constraintTop_toTopOf="@+id/textView6" />
@@ -194,11 +187,12 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
 
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/Graphs"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="40dp"
                     android:visibility="visible"
                     app:cardElevation="0dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -207,7 +201,7 @@
 
                     <ScrollView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:contentDescription="@string/Novosibirsk">
 
                         <LinearLayout
@@ -217,7 +211,7 @@
 
                             <androidx.cardview.widget.CardView
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent" >
+                                android:layout_height="match_parent">
 
                                 <androidx.constraintlayout.widget.ConstraintLayout
                                     android:layout_width="match_parent"
@@ -231,7 +225,6 @@
                                         android:layout_marginTop="10dp"
                                         android:fontFamily="@font/fredoka_one"
                                         android:text="houres / wind speed"
-                                        android:textColor="@color/black"
                                         app:layout_constraintStart_toStartOf="parent"
                                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -251,7 +244,8 @@
 
                             <androidx.cardview.widget.CardView
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent" >
+                                android:layout_height="match_parent"
+                                android:paddingTop="20dp">
 
                                 <androidx.constraintlayout.widget.ConstraintLayout
                                     android:layout_width="match_parent"
@@ -265,7 +259,6 @@
                                         android:layout_marginTop="10dp"
                                         android:fontFamily="@font/fredoka_one"
                                         android:text="temperature"
-                                        android:textColor="@color/black"
                                         app:layout_constraintStart_toStartOf="parent"
                                         app:layout_constraintTop_toTopOf="parent" />
 

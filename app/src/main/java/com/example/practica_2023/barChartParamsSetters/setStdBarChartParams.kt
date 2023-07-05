@@ -22,6 +22,7 @@ fun setStanderBarChartParams(barChart: BarChart) {
     barChart.xAxis.setDrawGridLines(false);
     barChart.axisRight.setDrawLabels(false);
     barChart.axisLeft.setDrawLabels(true);
+    barChart.legend.isEnabled = false
     barChart.xAxis.setDrawLabels(false)
     barChart.xAxis.setDrawAxisLine(false)
     barChart.axisLeft.setDrawAxisLine(false);
