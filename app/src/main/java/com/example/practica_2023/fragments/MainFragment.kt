@@ -1,10 +1,6 @@
 package com.example.practica_2023.fragments
 
-import android.Manifest
 import android.annotation.SuppressLint
-import android.content.Context
-import android.content.pm.PackageManager
-import android.location.Location
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -15,9 +11,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import com.example.practica_2023.R
 import com.example.practica_2023.barChartParamsSetters.setBarChartData
 import com.example.practica_2023.barChartParamsSetters.setStanderBarChartParams
@@ -26,7 +20,6 @@ import com.example.practica_2023.getLink
 import com.example.practica_2023.jsonObjectsGetters.getWeatherObjectInfo
 import com.example.practica_2023.weatherRepoertGetters.stdGetWeatherReport
 import com.github.mikephil.charting.data.BarEntry
-import com.google.android.gms.location.LocationServices
 import org.json.JSONObject
 import com.example.practica_2023.coordGetters.getCoord
 import kotlin.math.roundToInt
@@ -56,13 +49,9 @@ class MainFragment : Fragment() {
         setStanderBarChartParams(binding.HourTempChart)
         setStanderBarChartParams(binding.HourWSChart)
         linkParams = mutableMapOf(
-//            "q" to binding.PlaceChecker.selectedItem.toString(),
             "units" to getString(R.string.api_units),
             "appid" to getString(R.string.api_key)
         )
-//        val params = updateLinkParams()
-//        Log.d("Params", "Params $params")
-//        updateInfo(params.toMap())
         updateLinkParams()
         return binding.root
     }
@@ -71,9 +60,6 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         permissionCheck()
         binding.swiperefresh.setOnRefreshListener {
-//            val params = updateLinkParams()
-//            Log.d("Params", "Params $params")
-//            updateInfo(params.toMap())
             updateLinkParams()
             binding.swiperefresh.isRefreshing = false
         }
@@ -88,8 +74,6 @@ class MainFragment : Fragment() {
                 id: Long
             ) {
                 updateLinkParams()
-//                Log.d("Params", "Params $params")
-//                updateInfo(params.toMap())
             }
 
         }
@@ -103,7 +87,6 @@ class MainFragment : Fragment() {
             pLauncher.launch(android.Manifest.permission.ACCESS_FINE_LOCATION)
         }
     }
-
 
     // Updates. Just for less code.
     private fun updateInfo(linkParams: Map<String, String>) {
@@ -175,8 +158,6 @@ class MainFragment : Fragment() {
             params["q"] = binding.PlaceChecker.selectedItem.toString()
             updateInfo(params.toMap())
         }
-//        Log.d("Params", "Params $params")
-//        return params.toMap()
     }
 
     // Updates. Just for less code.
