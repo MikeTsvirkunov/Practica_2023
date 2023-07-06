@@ -1,13 +1,14 @@
 package com.example.practica_2023.barChartParamsSetters
 
 import android.content.res.Resources
+import android.graphics.Color
 import android.os.Build
 import androidx.annotation.RequiresApi
 import com.example.practica_2023.R
 import com.github.mikephil.charting.charts.BarChart
 
 
-fun setStanderBarChartParams(barChart: BarChart) {
+fun setStanderBarChartParams(barChart: BarChart, darkThem: Boolean) {
     barChart.setDrawValueAboveBar(false)
     barChart.setDrawBarShadow(false)
     barChart.setDrawGridBackground(false)
@@ -24,6 +25,9 @@ fun setStanderBarChartParams(barChart: BarChart) {
     barChart.axisLeft.setDrawLabels(true);
     barChart.legend.isEnabled = false
     barChart.xAxis.setDrawLabels(false)
+    if (darkThem){
+        barChart.axisLeft.textColor = Color.WHITE
+    }
     barChart.xAxis.setDrawAxisLine(false)
     barChart.axisLeft.setDrawAxisLine(false);
     barChart.axisRight.setDrawAxisLine(false);

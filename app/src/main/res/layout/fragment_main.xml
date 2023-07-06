@@ -150,7 +150,6 @@
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/fredoka_one"
                             android:text="@string/wind_speed"
-                            android:textColor="@color/design_default_color_on_secondary"
                             app:layout_constraintStart_toStartOf="@+id/TemperatureLabel"
                             app:layout_constraintTop_toBottomOf="@+id/TempInfoLabel" />
 

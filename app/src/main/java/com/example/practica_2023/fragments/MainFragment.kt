@@ -114,8 +114,8 @@ class MainFragment : Fragment() {
                     },
                     { obj ->
                         wsWeatherReportList.add(
-                            JSONObject(obj.getJSONObject("main").toString())
-                                .getDouble("humidity")
+                            JSONObject(obj.getJSONObject("wind").toString())
+                                .getDouble("speed")
                                 .toFloat()
                         )
                     },
