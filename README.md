@@ -6,3 +6,4 @@
 
 # debug-builded apk
 - https://disk.yandex.ru/d/RYYxnTQxQ4y57Q
+- End1: https://disk.yandex.ru/d/kwEeQMejkRb-ww
