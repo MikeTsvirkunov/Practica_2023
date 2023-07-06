@@ -1,6 +1,7 @@
 package com.example.practica_2023.fragments
 
 import android.annotation.SuppressLint
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.example.practica_2023.R
 import com.example.practica_2023.barChartParamsSetters.setBarChartData
@@ -30,6 +32,7 @@ class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
     private lateinit var linkParams: MutableMap<String, String>
 
+    @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -46,8 +49,8 @@ class MainFragment : Fragment() {
             R.layout.city_check_layout,
             x
         )
-        setStanderBarChartParams(binding.HourTempChart)
-        setStanderBarChartParams(binding.HourWSChart)
+        setStanderBarChartParams(binding.HourTempChart, resources.configuration.isNightModeActive)
+        setStanderBarChartParams(binding.HourWSChart, resources.configuration.isNightModeActive)
         linkParams = mutableMapOf(
             "units" to getString(R.string.api_units),
             "appid" to getString(R.string.api_key)
