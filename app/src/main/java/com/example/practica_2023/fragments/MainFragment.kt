@@ -25,6 +25,10 @@ import com.github.mikephil.charting.data.BarEntry
 import org.json.JSONObject
 import com.example.practica_2023.coordGetters.getCoord
 import kotlin.math.roundToInt
+import com.example.practica_2023.barChartParamsSetters.setLabel
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class MainFragment : Fragment() {
@@ -92,6 +96,7 @@ class MainFragment : Fragment() {
     }
 
     // Updates. Just for less code.
+    @SuppressLint("SimpleDateFormat")
     private fun updateInfo(linkParams: Map<String, String>) {
         stdGetWeatherReport(
             url = getLink(getString(R.string.current_link), linkParams),
@@ -123,15 +128,19 @@ class MainFragment : Fragment() {
                         )
                     },
                 )
+//                val t = mutableListOf<String>()
                 val tt = arrayListOf<BarEntry>()
                 val tws = arrayListOf<BarEntry>()
 
                 getWeatherObjectInfo(data, (0..data.length() step 3).iterator(), valueTakers)
                 (0 until tempWeatherReportList.size).forEach { pair ->
+//                    t.add(timesWeatherReportList[pair])
                     tt.add(BarEntry(pair.toFloat(), tempWeatherReportList[pair]))
                     tws.add(BarEntry(pair.toFloat(), wsWeatherReportList[pair]))
                 }
                 setBarChartData(binding.HourTempChart, "Temperature", tt)
+                setLabel(binding.HourTempChart, timesWeatherReportList.map { date ->SimpleDateFormat("kk:mm").format(date.toLong()*1000).toString() })
+                setLabel(binding.HourWSChart, timesWeatherReportList.map { date ->SimpleDateFormat("kk:mm").format(date.toLong()*1000).toString() })
                 setBarChartData(binding.HourWSChart, "WindSpeed", tws)
             }
         )

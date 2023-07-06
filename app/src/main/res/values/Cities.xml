@@ -9,6 +9,5 @@
     <string-array name="places">
         <item>Omsk</item>
         <item>London</item>
-        <item>Current</item>
     </string-array>
 </resources>

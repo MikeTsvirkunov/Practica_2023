@@ -24,9 +24,11 @@ fun setStanderBarChartParams(barChart: BarChart, darkThem: Boolean) {
     barChart.axisRight.setDrawLabels(false);
     barChart.axisLeft.setDrawLabels(true);
     barChart.legend.isEnabled = false
-    barChart.xAxis.setDrawLabels(false)
+    barChart.xAxis.labelRotationAngle = -45f
+    barChart.xAxis.setDrawLabels(true)
     if (darkThem){
         barChart.axisLeft.textColor = Color.WHITE
+        barChart.xAxis.textColor = Color.WHITE
     }
     barChart.xAxis.setDrawAxisLine(false)
     barChart.axisLeft.setDrawAxisLine(false);
